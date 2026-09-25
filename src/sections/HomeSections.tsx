@@ -47,7 +47,7 @@ export function Intro() {
         </p>
         <div className="intro__grid">
           <div className="intro__media">
-            <RevealImage className="intro__big" src={img('1600585154340-be6161a56a0c', 1600)} alt="Aurum residence facade" />
+            <RevealImage className="intro__big" src={img('1600585154340-be6161a56a0c', 1600)} alt="MaverickIgnite residence facade" />
             <div className="intro__small">
               <RevealImage src={img('1600210492486-724fe5c67fb0', 900)} alt="Living room interior" from="left" parallax={false} />
             </div>
@@ -59,7 +59,7 @@ export function Intro() {
             </p>
             <p className="r">
               Every project is guided by the same simple belief our founder started with: build it as if your own family were
-              going to live there. That is why more than 35,000 families have chosen an Aurum address.
+              going to live there. That is why more than 35,000 families have chosen a MaverickIgnite address.
             </p>
             <TLink to="/legacy" className="r link-arrow">
               Discover our story <Arrow />
@@ -273,7 +273,7 @@ export function Pillars() {
     <section ref={ref} className="pillars section">
       <div className="container">
         <div className="pillars__head">
-          <Eyebrow index="04">The Aurum promise</Eyebrow>
+          <Eyebrow index="04">The MaverickIgnite promise</Eyebrow>
           <SplitReveal className="h-display">Four things we never compromise on.</SplitReveal>
         </div>
         <div className="pillars__stack">

@@ -8,6 +8,7 @@ import { Arrow, Eyebrow, Img, Reveal, RevealImage, SplitReveal, TLink } from '..
 import { getProject, projects } from '../data/projects'
 import { useApp } from '../lib/app-context'
 import { getLenis, gsap, prefersReducedMotion, ScrollTrigger, useGSAP } from '../lib/motion'
+import { FloorPlansSection, MasterLayoutSection } from '../sections/ProjectPlans'
 import NotFound from './NotFound'
 
 const SECTIONS = [
@@ -15,6 +16,7 @@ const SECTIONS = [
   { id: 'highlights', label: 'Highlights' },
   { id: 'gallery', label: 'Gallery' },
   { id: 'amenities', label: 'Amenities' },
+  { id: 'layout', label: 'Master layout' },
   { id: 'plans', label: 'Floor plans' },
   { id: 'location', label: 'Location' },
   { id: 'enquire', label: 'Enquire' },
@@ -26,7 +28,6 @@ export default function ProjectDetail() {
   const { openEnquiry } = useApp()
   const root = useRef<HTMLDivElement>(null)
   const [section, setSection] = useState('overview')
-  const [plan, setPlan] = useState(0)
 
   useGSAP(
     () => {
@@ -58,16 +59,6 @@ export default function ProjectDetail() {
       })
     },
     { scope: root, dependencies: [slug] },
-  )
-
-  // cross-fade floor plan image on tab change
-  useGSAP(
-    () => {
-      if (prefersReducedMotion) return
-      gsap.fromTo('.plans__media img', { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 0.9, ease: 'power3.out' })
-      gsap.from('.plans__area', { yPercent: 100, duration: 0.8, ease: 'expo.out' })
-    },
-    { scope: root, dependencies: [plan], revertOnUpdate: true },
   )
 
   if (!project) return <NotFound />
@@ -218,35 +209,13 @@ export default function ProjectDetail() {
         </div>
       </section>
 
-      <section id="plans" className="plans section">
-        <div className="container plans__grid">
-          <div>
-            <Eyebrow index="05">Floor plans</Eyebrow>
-            <SplitReveal className="h-display">Layouts that just work.</SplitReveal>
-            <div className="plans__tabs" role="tablist">
-              {project.floorPlans.map((fp, i) => (
-                <button key={fp.name} role="tab" aria-selected={plan === i} className={plan === i ? 'is-active' : ''} onClick={() => setPlan(i)}>
-                  {fp.name}
-                </button>
-              ))}
-            </div>
-            <div className="plans__area-mask">
-              <p className="plans__area">{project.floorPlans[plan].area}</p>
-            </div>
-            <button className="link-arrow" onClick={() => openEnquiry(project.name)}>
-              Request detailed floor plans <Arrow />
-            </button>
-          </div>
-          <div className="plans__media">
-            <Img key={plan} src={project.floorPlans[plan].image} alt={`${project.floorPlans[plan].name} layout`} />
-          </div>
-        </div>
-      </section>
+      <MasterLayoutSection project={project} />
+      <FloorPlansSection project={project} />
 
       <section id="location" className="location section">
         <div className="container">
           <div className="section-head">
-            <Eyebrow index="06">Location</Eyebrow>
+            <Eyebrow index="07">Location</Eyebrow>
             <SplitReveal className="h-display">
               {project.location}, {project.city}.
             </SplitReveal>
@@ -265,7 +234,7 @@ export default function ProjectDetail() {
       <section id="enquire" className="enquire section">
         <div className="container enquire__grid">
           <div>
-            <Eyebrow index="07">Enquire</Eyebrow>
+            <Eyebrow index="08">Enquire</Eyebrow>
             <SplitReveal className="h-display">Visit {project.name}.</SplitReveal>
             <p className="lead">Tell us a little about what you’re looking for and we’ll set up a private site visit.</p>
           </div>

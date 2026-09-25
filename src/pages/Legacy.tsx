@@ -95,8 +95,8 @@ export default function Legacy() {
             </Reveal>
           </div>
           <div className="story__media">
-            <RevealImage src={img('1600596542815-ffad4c1539a9', 1400)} alt="Aurum residence at dusk" />
-            <RevealImage className="story__media-small" src={img('1497366811353-6870744d04b2', 900)} alt="Aurum office" from="right" />
+            <RevealImage src={img('1600596542815-ffad4c1539a9', 1400)} alt="MaverickIgnite residence at dusk" />
+            <RevealImage className="story__media-small" src={img('1497366811353-6870744d04b2', 900)} alt="MaverickIgnite office" from="right" />
           </div>
         </div>
       </section>

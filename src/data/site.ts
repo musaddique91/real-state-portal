@@ -4,14 +4,14 @@ export const img = (id: string, w = 1600) =>
   `https://images.unsplash.com/photo-${id}?auto=format&fit=crop&w=${w}&q=80`
 
 export const site = {
-  name: 'Aurum Estates',
-  short: 'AURUM',
+  name: 'MaverickIgnite',
+  short: 'MaverickIgnite',
   founded: 1986,
   tagline: 'Crafting landmarks, building trust',
   description:
-    'Aurum Estates is a real estate developer crafting premium residential and commercial spaces across Pune, Mumbai and Bengaluru.',
+    'MaverickIgnite is a real estate developer crafting premium residential and commercial spaces across Pune, Mumbai and Bengaluru.',
   phone: '+91 98765 43210',
-  email: 'sales@aurumestates.in',
+  email: 'sales@maverickignite.in',
   whatsapp: '919876543210',
   address: '12, Signature Tower, Koregaon Park, Pune 411001',
   mapQuery: 'Koregaon Park, Pune',
@@ -45,28 +45,28 @@ export const testimonials = [
     quote:
       'From the first site visit to the day we got our keys, everything was transparent. The quality of construction speaks for itself.',
     name: 'Ananya & Rohit Mehta',
-    role: 'Residents, Aurum Parkview',
+    role: 'Residents, Maverick Parkview',
     photo: img('1494790108377-be9c29b29330', 300),
   },
   {
     quote:
-      'Our office at Aurum Business Bay has become a real asset for the company. Great location, great people, great maintenance.',
+      'Our office at Maverick Business Bay has become a real asset for the company. Great location, great people, great maintenance.',
     name: 'Vikram Desai',
     role: 'Founder, Northwind Labs',
     photo: img('1507003211169-0a1dd7228f2d', 300),
   },
   {
     quote:
-      'We bought our second home with Aurum because the first one was such a good experience. That says everything.',
+      'We bought our second home with MaverickIgnite because the first one was such a good experience. That says everything.',
     name: 'Farah Sheikh',
-    role: 'Resident, Aurum Riverside',
+    role: 'Resident, Maverick Riverside',
     photo: img('1438761681033-6461ffad8d80', 300),
   },
   {
     quote:
       'Possession on time, every promise kept. The clubhouse and landscaping are even better than the brochure.',
     name: 'Sanjay Kulkarni',
-    role: 'Resident, Aurum Skyline',
+    role: 'Resident, Maverick Skyline',
     photo: img('1500648767791-00dcc994a43e', 300),
   },
 ]
@@ -95,12 +95,12 @@ export const pillars = [
 ]
 
 export const timeline = [
-  { year: '1986', title: 'The beginning', text: 'Aurum is founded in Pune with a single residential building and a promise: build it as if it were our own home.' },
-  { year: '1995', title: 'First commercial landmark', text: 'Aurum Business Bay opens, redefining office spaces in the heart of the city.' },
+  { year: '1986', title: 'The beginning', text: 'MaverickIgnite is founded in Pune with a single residential building and a promise: build it as if it were our own home.' },
+  { year: '1995', title: 'First commercial landmark', text: 'Maverick Business Bay opens, redefining office spaces in the heart of the city.' },
   { year: '2004', title: '50 projects', text: 'Half a century of projects delivered — and every one of them handed over on time.' },
   { year: '2012', title: 'Beyond Pune', text: 'Expansion into Mumbai and Bengaluru with large-format integrated townships.' },
   { year: '2019', title: 'Sustainable by default', text: 'All new projects designed to IGBC green-building standards with rainwater harvesting and solar.' },
-  { year: 'Today', title: '120+ landmarks', text: 'More than 35,000 families and hundreds of businesses call an Aurum address home.' },
+  { year: 'Today', title: '120+ landmarks', text: 'More than 35,000 families and hundreds of businesses call a MaverickIgnite address home.' },
 ]
 
 export const leaders = [

@@ -78,7 +78,7 @@ export default function App() {
   }, [location.pathname, location.search])
 
   const openEnquiry = useCallback((project = '') => setEnquiry({ open: true, project }), [])
-  const closeEnquiry = useCallback(() => setEnquiry((e) => ({ ...e, open: false })), [])
+  const closeEnquiry = useCallback(() => setEnquiry((e) => (e.open ? { ...e, open: false } : e)), [])
   const ctx = useMemo(() => ({ ready, go, openEnquiry }), [ready, go, openEnquiry])
 
   return (

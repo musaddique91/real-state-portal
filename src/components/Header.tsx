@@ -14,7 +14,7 @@ export function Logo() {
       </svg>
       <span className="logo__text">
         {site.short}
-        <small>ESTATES</small>
+        <small>REAL ESTATE</small>
       </span>
     </TLink>
   )

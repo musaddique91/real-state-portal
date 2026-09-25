@@ -3,6 +3,19 @@ import { img } from './site'
 export type ProjectType = 'Residential' | 'Commercial'
 export type ProjectStatus = 'Ongoing' | 'Completed' | 'Upcoming'
 
+/** Which drawn unit plan to show (used when no real plan image is supplied). */
+export type PlanTemplate = '2bhk' | '3bhk' | '4bhk' | 'villa' | 'office' | 'retail'
+/** Which drawn master layout / site plan to show. */
+export type LayoutKind = 'residential' | 'villas' | 'commercial'
+
+export type FloorPlan = {
+  name: string
+  area: string
+  template: PlanTemplate
+  /** optional real floor-plan image (e.g. '/plans/skyline-2bhk.jpg'); replaces the drawn plan */
+  image?: string
+}
+
 export type Project = {
   slug: string
   name: string
@@ -20,7 +33,13 @@ export type Project = {
   gallery: string[]
   highlights: string[]
   amenities: string[]
-  floorPlans: { name: string; area: string; image: string }[]
+  floorPlans: FloorPlan[]
+  layout: LayoutKind
+  /** optional real master-layout image; the numbered hotspots are drawn on top of it */
+  masterLayoutImage?: string
+  /** optional real typical-floor image for the Master Floor Plan tab */
+  masterFloorPlanImage?: string
+  towers: string[]
 }
 
 const residentialAmenities = [
@@ -32,15 +51,17 @@ const commercialAmenities = [
   'Access Control', '24x7 Security', 'Power Backup', 'Fire Safety', 'Business Lounge', 'Café',
 ]
 
-const plans = (a: string, b: string) => [
-  { name: '2 BHK', area: a, image: img('1600607687939-ce8a6c25118c', 1200) },
-  { name: '3 BHK', area: b, image: img('1600566753190-17f0baa2a6c3', 1200) },
+const plans = (a: string, b: string): FloorPlan[] => [
+  { name: '2 BHK', area: a, template: '2bhk' },
+  { name: '3 BHK', area: b, template: '3bhk' },
 ]
 
 export const projects: Project[] = [
   {
-    slug: 'aurum-skyline',
-    name: 'Aurum Skyline',
+    slug: 'maverick-skyline',
+    layout: 'residential',
+    towers: ['Tower A', 'Tower B'],
+    name: 'Maverick Skyline',
     type: 'Residential',
     status: 'Ongoing',
     location: 'Baner',
@@ -72,8 +93,10 @@ export const projects: Project[] = [
     floorPlans: plans('850 sq.ft.', '1,450 sq.ft.'),
   },
   {
-    slug: 'aurum-riverside',
-    name: 'Aurum Riverside',
+    slug: 'maverick-riverside',
+    layout: 'residential',
+    towers: ['Tower A', 'Tower B'],
+    name: 'Maverick Riverside',
     type: 'Residential',
     status: 'Completed',
     location: 'Kalyani Nagar',
@@ -102,13 +125,15 @@ export const projects: Project[] = [
     ],
     amenities: residentialAmenities,
     floorPlans: [
-      { name: '3 BHK', area: '1,600 sq.ft.', image: img('1600210492486-724fe5c67fb0', 1200) },
-      { name: '4 BHK', area: '2,400 sq.ft.', image: img('1502672260266-1c1ef2d93688', 1200) },
+      { name: '3 BHK', area: '1,600 sq.ft.', template: '3bhk' },
+      { name: '4 BHK', area: '2,400 sq.ft.', template: '4bhk' },
     ],
   },
   {
-    slug: 'aurum-business-bay',
-    name: 'Aurum Business Bay',
+    slug: 'maverick-business-bay',
+    layout: 'commercial',
+    towers: ['Business Tower'],
+    name: 'Maverick Business Bay',
     type: 'Commercial',
     status: 'Completed',
     location: 'Bund Garden Road',
@@ -137,13 +162,15 @@ export const projects: Project[] = [
     ],
     amenities: commercialAmenities,
     floorPlans: [
-      { name: 'Office Suite', area: '1,200 sq.ft.', image: img('1497366811353-6870744d04b2', 1200) },
-      { name: 'Full Floor', area: '20,000 sq.ft.', image: img('1497366216548-37526070297c', 1200) },
+      { name: 'Office Suite', area: '1,200 sq.ft.', template: 'office' },
+      { name: 'Full Floor', area: '20,000 sq.ft.', template: 'office' },
     ],
   },
   {
-    slug: 'aurum-greenfields',
-    name: 'Aurum Greenfields',
+    slug: 'maverick-greenfields',
+    layout: 'residential',
+    towers: ['Wing A', 'Wing B'],
+    name: 'Maverick Greenfields',
     type: 'Residential',
     status: 'Upcoming',
     location: 'Hinjewadi',
@@ -174,8 +201,10 @@ export const projects: Project[] = [
     floorPlans: plans('780 sq.ft.', '1,180 sq.ft.'),
   },
   {
-    slug: 'aurum-marina',
-    name: 'Aurum Marina',
+    slug: 'maverick-marina',
+    layout: 'residential',
+    towers: ['Sea Tower', 'Bay Tower'],
+    name: 'Maverick Marina',
     type: 'Residential',
     status: 'Ongoing',
     location: 'Worli',
@@ -204,13 +233,15 @@ export const projects: Project[] = [
     ],
     amenities: residentialAmenities,
     floorPlans: [
-      { name: '3 BHK', area: '1,850 sq.ft.', image: img('1600210492486-724fe5c67fb0', 1200) },
-      { name: '4 BHK', area: '3,200 sq.ft.', image: img('1600566753190-17f0baa2a6c3', 1200) },
+      { name: '3 BHK', area: '1,850 sq.ft.', template: '3bhk' },
+      { name: '4 BHK', area: '3,200 sq.ft.', template: '4bhk' },
     ],
   },
   {
-    slug: 'aurum-tech-park',
-    name: 'Aurum Tech Park',
+    slug: 'maverick-tech-park',
+    layout: 'commercial',
+    towers: ['Block 1', 'Block 2'],
+    name: 'Maverick Tech Park',
     type: 'Commercial',
     status: 'Ongoing',
     location: 'Whitefield',
@@ -239,13 +270,15 @@ export const projects: Project[] = [
     ],
     amenities: commercialAmenities,
     floorPlans: [
-      { name: 'Office Suite', area: '5,000 sq.ft.', image: img('1497366811353-6870744d04b2', 1200) },
-      { name: 'Full Floor', area: '50,000 sq.ft.', image: img('1497366216548-37526070297c', 1200) },
+      { name: 'Office Suite', area: '5,000 sq.ft.', template: 'office' },
+      { name: 'Full Floor', area: '50,000 sq.ft.', template: 'office' },
     ],
   },
   {
-    slug: 'aurum-villas',
-    name: 'Aurum Villas',
+    slug: 'maverick-villas',
+    layout: 'villas',
+    towers: [],
+    name: 'Maverick Villas',
     type: 'Residential',
     status: 'Completed',
     location: 'Sarjapur Road',
@@ -274,13 +307,15 @@ export const projects: Project[] = [
     ],
     amenities: residentialAmenities,
     floorPlans: [
-      { name: 'Villa Type A', area: '3,600 sq.ft.', image: img('1570129477492-45c003edd2be', 1200) },
-      { name: 'Villa Type B', area: '4,800 sq.ft.', image: img('1568605114967-8130f3a36994', 1200) },
+      { name: 'Villa Type A', area: '3,600 sq.ft.', template: 'villa' },
+      { name: 'Villa Type B', area: '4,800 sq.ft.', template: 'villa' },
     ],
   },
   {
-    slug: 'aurum-central',
-    name: 'Aurum Central',
+    slug: 'maverick-central',
+    layout: 'commercial',
+    towers: ['Central Tower'],
+    name: 'Maverick Central',
     type: 'Commercial',
     status: 'Upcoming',
     location: 'Lower Parel',
@@ -308,14 +343,14 @@ export const projects: Project[] = [
     ],
     amenities: commercialAmenities,
     floorPlans: [
-      { name: 'Retail Unit', area: '800 sq.ft.', image: img('1497366216548-37526070297c', 1200) },
-      { name: 'Office Floor', area: '8,000 sq.ft.', image: img('1497366811353-6870744d04b2', 1200) },
+      { name: 'Retail Unit', area: '800 sq.ft.', template: 'retail' },
+      { name: 'Office Floor', area: '8,000 sq.ft.', template: 'office' },
     ],
   },
 ]
 
 export const featured = projects.filter((p) =>
-  ['aurum-skyline', 'aurum-marina', 'aurum-business-bay', 'aurum-greenfields', 'aurum-villas'].includes(p.slug),
+  ['maverick-skyline', 'maverick-marina', 'maverick-business-bay', 'maverick-greenfields', 'maverick-villas'].includes(p.slug),
 )
 
 export const getProject = (slug?: string) => projects.find((p) => p.slug === slug)
